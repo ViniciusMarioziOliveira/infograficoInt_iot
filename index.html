@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Infográfico 5G e IoT</title>
+<meta name="description" content="Infográfico interativo sobre como o 5G contribui para a evolução da Internet das Coisas: características, 4G × 5G, benefícios, aplicações, desafios e relação com IA e automação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Unbounded:wght@300;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/figures.css">
+<script>
+  try { var t = localStorage.getItem('iot5g-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+</head>
+<body>
+
+<!-- ================= Ícones (sprite) ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/><path d="M8.3 11.2a5.2 5.2 0 0 1 7.4 0M10.2 13.4a2.5 2.5 0 0 1 3.6 0"/><circle cx="12" cy="15.8" r=".9" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2.5 12h2M19.5 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 21V11l5 3v-3l5 3v-3l5 3V4h3v17z"/><path d="M7 17.5h2M12 17.5h2"/></symbol>
+    <symbol id="i-health" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M7.5 11.5h2.3l1.4-2.4 1.9 4.6 1.4-2.2h2"/></symbol>
+    <symbol id="i-agro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M12 13c0-4 3-7 8-7 0 4-3 7-8 7z"/><path d="M12 15.5c0-3-2.5-6-7-6 0 3.5 2.5 6 7 6z"/><path d="M5 21h14"/></symbol>
+    <symbol id="i-city" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l5-3v16M10 21V10h9v11M13 13.5h3M13 16.5h3M7 11h1M7 14h1"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5h15v-3.5l-2-5h-11l-2 5z"/><path d="M4.5 13h15"/><circle cx="8" cy="17" r="1.7"/><circle cx="16" cy="17" r="1.7"/></symbol>
+    <symbol id="i-energy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2.5L5 13.5h6l-1 8 9-12h-6z"/></symbol>
+    <symbol id="i-port" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 8l9-4 9 4v9l-9 4-9-4z"/><path d="M3 8l9 4 9-4M12 12v9"/></symbol>
+    <symbol id="i-mine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16a7.5 7.5 0 0 1 15 0"/><path d="M2.5 16h19v2.8h-19z"/><path d="M12 8.5V5M10 5h4"/></symbol>
+    <symbol id="i-retail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 10.5h10.2L20 7H6.2"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></symbol>
+    <symbol id="i-core" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9z"/><circle cx="12" cy="12" r="2.6"/><path d="M12 3v6.4M19.8 16.5l-5.5-3.2M4.2 16.5l5.5-3.2"/></symbol>
+    <symbol id="i-slice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7.5L12 3l9 4.5-9 4.5z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5L12 21l9-4.5"/></symbol>
+    <symbol id="i-edge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01M12 7h5M12 17h5"/></symbol>
+    <symbol id="i-private" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M12 11v6M9.3 10a3.8 3.8 0 0 1 5.4 0"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-sat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 12L12 9.2l2.8 2.8L12 14.8z"/><path d="M10.6 10.6L6.5 6.5M13.4 13.4l4.1 4.1M4 9l5-5M15 20l5-5"/><path d="M15.5 3.5a5 5 0 0 1 5 5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="19" cy="5" r="1.6"/><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="5" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><circle cx="19" cy="19" r="1.6"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2.5h6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H14a3.5 3.5 0 0 0 0-7h-4a3.5 3.5 0 0 1 0-7h5.8"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5v-3a4 4 0 0 1 8 0v3M12 14.5v2"/></symbol>
+    <symbol id="i-devices" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="12" height="9" rx="1.5"/><rect x="16.5" y="8.5" width="4.5" height="10" rx="1.2"/><path d="M6 18h7"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.6 5.4 3.6 8.5s-1.1 5.9-3.6 8.5c-2.5-2.6-3.6-5.4-3.6-8.5S9.5 6.1 12 3.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 5H10v14H6.5zM14 5h3.5v14H14z"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24" fill="currentColor"><path d="M5 5v14l9.5-7z"/><path d="M16.5 5H19v14h-2.5z"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></symbol>
+    <symbol id="i-antenna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 10v11M8.5 21h7"/><circle cx="12" cy="8" r="1.6"/><path d="M8 4.5a5.5 5.5 0 0 0 0 7M16 4.5a5.5 5.5 0 0 1 0 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5M12 17.5h.01"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18.2 14.6A5.6 5.6 0 0 1 21 20"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M8 15.5l3.5-4 3 2.5L19 8"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.3c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.1 0 2.9 5.6 1.6 5.6 4.4 0 1.2-1.2 2.1-2.8 2.1-1.3 0-2.4-.6-2.9-1.6M12 6v1.7M12 16.3V18"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.2c0-.9.7-1.7 1.6-1.7h2.8c.9 0 1.6.8 1.6 1.7V7M3 13h18"/></symbol>
+    <symbol id="i-law" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5V20M6 20.5h12M5 7h14M5 7l-2.6 6a2.8 2.8 0 0 0 5.2 0zM19 7l-2.6 6a2.8 2.8 0 0 0 5.2 0z"/></symbol>
+    <symbol id="i-puzzle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4v-4.2a2 2 0 1 0 0-3.6z"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20v-3M9.5 20v-6M14 20v-9M18.5 20V6"/></symbol>
+  </defs>
+</svg>
+
+<main class="poster" id="topo">
+
+  <!-- ================= Barra superior: medidor de sinal ================= -->
+  <nav class="topbar wrap" aria-label="Navegação entre as perguntas">
+    <a class="brand" href="#inicio" aria-label="Voltar ao início">
+      <svg aria-hidden="true"><use href="#i-logo"/></svg><span>5G × IoT</span>
+    </a>
+    <ol class="signal" id="signalNav">
+      <li><a href="#q1" data-label="O que é 5G?"><span class="bar"></span>Q1</a></li>
+      <li><a href="#q2" data-label="4G × 5G"><span class="bar"></span>Q2</a></li>
+      <li><a href="#q3" data-label="Benefícios para a IoT"><span class="bar"></span>Q3</a></li>
+      <li><a href="#q4" data-label="Aplicações"><span class="bar"></span>Q4</a></li>
+      <li><a href="#q5" data-label="Desafios"><span class="bar"></span>Q5</a></li>
+      <li><a href="#q6" data-label="IA e automação"><span class="bar"></span>Q6</a></li>
+      <li><a href="#fim" data-label="Conclusão e quiz"><span class="bar"></span>Fim</a></li>
+    </ol>
+    <span class="now-label" id="nowLabel" aria-live="polite">Início</span>
+    <div class="top-tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema claro/escuro">
+        <svg class="ico-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================= Hero ================= -->
+  <header class="hero" id="inicio">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-inner wrap">
+      <div class="hero-meta">
+        <span class="eyebrow">Infográfico interativo · Conectividade em IoT</span>
+        <span class="eyebrow">Pesquisa · seção 8 · 10.11.2026</span>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <span class="hero-5g">5G</span><span class="hero-x">×</span><span class="hero-iot">IoT</span>
+      </div>
+      <h1>A primeira rede móvel pensada também para as máquinas</h1>
+      <p class="lead">Como a quinta geração de redes móveis contribui para a evolução da Internet das Coisas, em seis perguntas que você pode explorar, arrastar e simular.</p>
+      <div class="pillar-legend" aria-label="Os três pilares do 5G">
+        <span class="ptag ptag--embb">eMBB · banda larga extrema</span>
+        <span class="ptag ptag--urllc">URLLC · latência mínima</span>
+        <span class="ptag ptag--mmtc">mMTC · conexões em massa</span>
+      </div>
+      <div class="hero-credits">
+        <span><b>Dupla:</b> Julio Aurelio Souza e Vinicius Mariozi Oliveira</span>
+        <span><b>Tema:</b> tecnologias de conectividade para IoT</span>
+      </div>
+      <p class="hero-hint">Clique no mapa de células para emitir um sinal · <span class="kbd">←</span> <span class="kbd">→</span> trocam de pergunta</p>
+    </div>
+  </header>
+
+  <!-- números-chave -->
+  <div class="wrap">
+    <div class="kpis" aria-label="Metas do 5G (ITU IMT-2020)">
+      <div class="kpi"><div class="kpi-v"><span data-count="20">20</span><small>Gbit/s</small></div><p class="kpi-l">taxa de pico (download)</p></div>
+      <div class="kpi"><div class="kpi-v"><span data-count="1">1</span><small>ms</small></div><p class="kpi-l">latência no rádio para aplicações críticas</p></div>
+      <div class="kpi"><div class="kpi-v"><span data-count="1">1</span><small>milhão/km²</small></div><p class="kpi-l">dispositivos conectados</p></div>
+      <div class="kpi"><div class="kpi-v"><span data-count="99.999" data-dec="3">99,999</span><small>%</small></div><p class="kpi-l">confiabilidade de entrega</p></div>
+      <div class="kpi"><div class="kpi-v"><span data-count="500">500</span><small>km/h</small></div><p class="kpi-l">mobilidade com conexão estável</p></div>
+    </div>
+  </div>
+
+  <!-- índice -->
+  <section class="toc wrap" aria-labelledby="tocTitle">
+    <h2 class="eyebrow" id="tocTitle">As seis perguntas da pesquisa</h2>
+    <ol>
+      <li><a href="#q1"><span class="tq">Q1</span><span class="tt">O que é 5G e quais são suas características?</span><span class="ts">Pilares, espectro e habilitadores</span></a></li>
+      <li><a href="#q2"><span class="tq">Q2</span><span class="tt">Quais são as diferenças entre 4G e 5G?</span><span class="ts">Comparador, corrida da latência, NSA × SA</span></a></li>
+      <li><a href="#q3"><span class="tq">Q3</span><span class="tt">Como o 5G beneficia a IoT?</span><span class="ts">Fábrica 5G e fatiamento ao vivo</span></a></li>
+      <li><a href="#q4"><span class="tq">Q4</span><span class="tt">Quais são as principais aplicações?</span><span class="ts">Colmeia de 9 setores</span></a></li>
+      <li><a href="#q5"><span class="tq">Q5</span><span class="tt">Quais são os desafios?</span><span class="ts">Brasil em 2026, metas de 5G SA e borda</span></a></li>
+      <li><a href="#q6"><span class="tq">Q6</span><span class="tt">Como o 5G se relaciona com IA e automação?</span><span class="ts">O ciclo dados → decisão → ação</span></a></li>
+    </ol>
+  </section>
+
+  <!-- ================= Q1 ================= -->
+  <section class="q wrap" id="q1" data-label="O que é 5G?">
+    <div class="q-head">
+      <div class="q-num" aria-hidden="true">Q1</div>
+      <div>
+        <p class="eyebrow"><span>Pergunta 01 de 06</span><span>· Características</span></p>
+        <h2 class="q-title">O que é 5G e quais são suas principais características?</h2>
+      </div>
+    </div>
+    <div class="answer">
+      <p class="eyebrow">Resposta rápida</p>
+      <p>O 5G é a <strong>quinta geração de redes móveis</strong>. Usa o rádio <button type="button" class="term" data-term="nr">5G New Radio (NR)</button> e um núcleo de rede (<em>5G Core</em>) feito em software e nativo em nuvem. As gerações anteriores foram projetadas para pessoas; o 5G é a <strong>primeira pensada desde o início também para máquinas</strong>. Em uma mesma infraestrutura, atende de sensores que enviam poucos bytes por dia até robôs que precisam de resposta em milissegundos. Os requisitos vêm do programa <button type="button" class="term" data-term="imt">IMT-2020</button> da ITU e a padronização é do <button type="button" class="term" data-term="3gpp">3GPP</button>, a partir do Release 15 (2018).</p>
+    </div>
+
+    <div class="stack">
+      <!-- FIG 1.1 gerações -->
+      <figure class="fig reveal" id="figGens">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 1.1</p><h3 class="fig-title">De rede para pessoas a rede para máquinas</h3></div>
+          <span class="fig-hint">clique em uma geração</span>
+        </div>
+        <div class="fig-body">
+          <div class="gens" role="tablist" aria-label="Gerações de redes móveis" id="gensList"></div>
+          <div class="gen-panel" id="gensPanel" role="tabpanel" aria-live="polite"></div>
+        </div>
+      </figure>
+
+      <!-- FIG 1.2 ficha técnica -->
+      <figure class="fig reveal" id="figSpecs">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 1.2</p><h3 class="fig-title">Ficha técnica: as metas do 5G</h3></div>
+          <span class="fig-hint">passe o mouse para destacar o pilar</span>
+        </div>
+        <div class="fig-body"><div class="specs" id="specGrid"></div></div>
+        <p class="fig-cap">Metas de referência da ITU (IMT-2020). A eficiência energética de 100× é a meta da rede em relação ao IMT-Advanced (4G). Redes reais entregam valores menores que os de pico.</p>
+      </figure>
+
+      <!-- FIG 1.3 triângulo dos pilares -->
+      <figure class="fig reveal" id="figTri">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 1.3</p><h3 class="fig-title">Os três pilares: arraste a sonda pelo triângulo</h3></div>
+          <span class="fig-hint">arraste · clique · use as setas</span>
+        </div>
+        <div class="fig-body tri-layout">
+          <div class="tri-stage">
+            <svg id="triSvg" viewBox="0 0 600 560" role="application" aria-label="Triângulo dos pilares do 5G. Use as setas para mover a sonda."></svg>
+          </div>
+          <div class="tri-side">
+            <div class="seg" id="triPresets" aria-label="Ir para um pilar">
+              <button type="button" data-p="embb">eMBB</button>
+              <button type="button" data-p="urllc">URLLC</button>
+              <button type="button" data-p="mmtc">mMTC</button>
+            </div>
+            <div class="mix" id="triMix" aria-live="polite"></div>
+            <div class="pillar-card" id="triCard"></div>
+            <div class="near">
+              <p class="eyebrow">Aplicações mais próximas da sonda</p>
+              <ol id="triNear"></ol>
+            </div>
+          </div>
+        </div>
+        <p class="fig-cap">Cada ponto é uma aplicação posicionada pela mistura de requisitos que ela exige, no estilo do diagrama de cenários de uso da ITU (IMT-2020). Posições ilustrativas.</p>
+      </figure>
+
+      <!-- FIG 1.4 espectro -->
+      <figure class="fig reveal" id="figSpec">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 1.4</p><h3 class="fig-title">Espectro: alcance ou capacidade?</h3></div>
+          <span class="fig-hint">escolha uma faixa usada no Brasil</span>
+        </div>
+        <div class="fig-body">
+          <div class="band-btns" role="radiogroup" aria-label="Faixas de frequência do 5G no Brasil" id="bandBtns"></div>
+          <div class="spec-layout">
+            <div class="spec-canvas-box">
+              <canvas id="specCanvas" aria-label="Mapa ilustrativo de cobertura por faixa" role="img"></canvas>
+            </div>
+            <div class="spec-read" id="specRead" aria-live="polite"></div>
+          </div>
+          <div class="ruler-box"><svg id="specRuler" viewBox="0 0 900 96" aria-hidden="true"></svg></div>
+        </div>
+        <p class="fig-cap">Faixas do 5G no Brasil: FR1 (abaixo de 7 GHz: 700 MHz, 2,3 GHz e principalmente 3,5 GHz) e FR2 (ondas milimétricas: 26 GHz). Alcances e número de antenas são ilustrativos; variam com potência, antenas, relevo e ambiente. O comprimento de onda é calculado: λ = c ÷ f.</p>
+      </figure>
+
+      <!-- FIG 1.5 habilitadores -->
+      <figure class="fig reveal" id="figEnablers">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 1.5</p><h3 class="fig-title">Tecnologias que habilitam a IoT no 5G</h3></div>
+          <span class="fig-hint">arraste a linha do tempo · clique nos cartões</span>
+        </div>
+        <div class="fig-body">
+          <div class="rel-ctrl">
+            <label for="relRange" class="eyebrow">Release do 3GPP: <b id="relOut">20</b></label>
+            <input type="range" id="relRange" min="15" max="20" step="1" value="20">
+            <div class="rel-ticks" aria-hidden="true"><span>15 · 2018</span><span>16 · 2020</span><span>17 · 2022</span><span>18 · 5G-Adv.</span><span>19</span><span>20</span></div>
+          </div>
+          <div class="enablers" id="enGrid"></div>
+          <div class="en-detail" id="enDetail" aria-live="polite"></div>
+        </div>
+        <p class="fig-cap">O 5G evolui por Releases do 3GPP: Release 15 (2018) inaugura o 5G; Releases 16 e 17 trazem TSN, RedCap e satélites; o 5G-Advanced vai do Release 18 ao 20.</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Q2 ================= -->
+  <section class="q wrap" id="q2" data-label="4G × 5G">
+    <div class="q-head">
+      <div class="q-num" aria-hidden="true">Q2</div>
+      <div>
+        <p class="eyebrow"><span>Pergunta 02 de 06</span><span>· Comparação</span></p>
+        <h2 class="q-title">Quais são as diferenças entre 4G e 5G?</h2>
+      </div>
+    </div>
+    <div class="answer">
+      <p class="eyebrow">Resposta rápida</p>
+      <p>O 4G (LTE) foi projetado para levar <strong>banda larga ao smartphone</strong>. O 5G mantém essa função e acrescenta <strong>máquinas com requisitos muito diferentes</strong>. As diferenças estão no desempenho (até 20× mais taxa de pico, latência de ~10 ms ou menos, 10× mais dispositivos por km²) e na arquitetura: núcleo virtualizado e nativo em nuvem, <button type="button" class="term" data-term="mimo">massive MIMO</button>, <button type="button" class="term" data-term="slicing">fatiamento de rede</button> e <button type="button" class="term" data-term="mec">edge computing</button> integrado.</p>
+    </div>
+
+    <div class="stack">
+      <!-- FIG 2.1 comparador -->
+      <figure class="fig reveal" id="figCmp">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 2.1</p><h3 class="fig-title">Comparador 4G × 5G</h3></div>
+          <div class="seg" id="cmpSeg" aria-label="Geração em destaque">
+            <button type="button" data-g="4g" aria-pressed="false">4G · LTE</button>
+            <button type="button" data-g="5g" aria-pressed="true">5G · NR</button>
+          </div>
+        </div>
+        <div class="fig-body">
+          <div class="gauges" id="cmpGauges"></div>
+          <div class="cmp-table-box">
+            <table class="cmp-table" id="cmpTable">
+              <caption class="sr-only">Diferenças de arquitetura entre 4G e 5G</caption>
+              <thead><tr><th scope="col">Critério</th><th scope="col" data-col="4g">4G (LTE / LTE-Advanced)</th><th scope="col" data-col="5g">5G (NR)</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <p class="fig-cap">Fonte: quadro 4G × 5G da pesquisa (ITU IMT-Advanced e IMT-2020; 3GPP). Barras na mesma escala por linha; a marca vazada mostra o valor da outra geração.</p>
+      </figure>
+
+      <!-- FIG 2.2 corrida da latência -->
+      <figure class="fig reveal" id="figRace">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 2.2</p><h3 class="fig-title">Corrida da latência: quanto o carro anda antes do alerta chegar?</h3></div>
+          <span class="fig-hint">ajuste a velocidade e dispare</span>
+        </div>
+        <div class="fig-body">
+          <div class="race-ctrl">
+            <div class="race-speed">
+              <label for="raceSpeed" class="eyebrow">Velocidade do veículo: <b id="raceSpeedOut" class="num">100 km/h</b></label>
+              <input type="range" id="raceSpeed" min="20" max="300" step="10" value="100">
+            </div>
+            <button type="button" class="btn btn--ink" id="raceGo"><svg aria-hidden="true"><use href="#i-play"/></svg>Enviar alerta de frenagem</button>
+          </div>
+          <div class="race-box"><svg id="raceSvg" viewBox="0 0 900 330" role="img" aria-label="Três veículos em faixas: 4G, 5G e 5G URLLC"></svg></div>
+          <div class="race-results" id="raceResults" aria-live="polite"></div>
+        </div>
+        <p class="fig-cap">Distância = velocidade × latência, só o trecho percorrido enquanto o comando ainda está a caminho (antes de qualquer freio agir). Latências da pesquisa: 4G típico 30–50 ms (usamos 40 ms), 5G ~10 ms, URLLC ~1 ms no rádio. Animação em câmera lenta (25×).</p>
+      </figure>
+
+      <!-- FIG 2.3 NSA × SA -->
+      <figure class="fig reveal" id="figSA">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 2.3</p><h3 class="fig-title">5G NSA × 5G SA: o núcleo faz a diferença</h3></div>
+          <div class="seg" id="saSeg" aria-label="Tipo de rede 5G">
+            <button type="button" data-m="nsa" aria-pressed="true">NSA · núcleo 4G</button>
+            <button type="button" data-m="sa" aria-pressed="false">SA · núcleo 5G</button>
+          </div>
+        </div>
+        <div class="fig-body sa-layout">
+          <div class="sa-diagram" id="saDiagram">
+            <svg viewBox="0 0 420 250" id="saSvg" role="img" aria-label="Diagrama: antena 5G ligada ao núcleo da rede"></svg>
+          </div>
+          <div>
+            <p class="small muted" id="saText"></p>
+            <ul class="feat-list" id="saFeats"></ul>
+          </div>
+        </div>
+        <p class="fig-cap">As primeiras redes 5G foram Non-Standalone (NSA), apoiadas no núcleo do 4G. Só o 5G Standalone (SA), com núcleo próprio, entrega todas as diferenças do comparador acima.</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Q3 ================= -->
+  <section class="q wrap" id="q3" data-label="Benefícios para a IoT">
+    <div class="q-head">
+      <div class="q-num" aria-hidden="true">Q3</div>
+      <div>
+        <p class="eyebrow"><span>Pergunta 03 de 06</span><span>· Benefícios</span></p>
+        <h2 class="q-title">Como o 5G beneficia a IoT?</h2>
+      </div>
+    </div>
+    <div class="answer">
+      <p class="eyebrow">Resposta rápida</p>
+      <p>Até o 4G, a IoT celular servia basicamente para <strong>coletar dados</strong>. O 5G amplia esse papel para <strong>controlar e automatizar processos em tempo real</strong>: escala de milhões de sensores, latência de milissegundos, confiabilidade para trocar cabos por rádio, banda larga para câmeras e drones, redes sob medida, processamento na borda e dispositivos de todos os níveis na mesma rede.</p>
+    </div>
+
+    <div class="stack">
+      <!-- FIG 3.1 benefícios -->
+      <figure class="fig reveal" id="figBen">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 3.1</p><h3 class="fig-title">Do ciclo aberto ao ciclo fechado</h3></div>
+          <div class="seg" id="loopSeg" aria-label="Papel da rede">
+            <button type="button" data-m="4g" aria-pressed="false">Até o 4G: coletar</button>
+            <button type="button" data-m="5g" aria-pressed="true">Com 5G: controlar</button>
+          </div>
+        </div>
+        <div class="fig-body">
+          <div class="loop-mini" id="loopMini"></div>
+          <p class="eyebrow ben-title">Os 10 benefícios · clique para ler</p>
+          <div class="benefits" id="benGrid"></div>
+        </div>
+      </figure>
+
+      <!-- FIG 3.2 fábrica -->
+      <figure class="fig reveal" id="figFab">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 3.2</p><h3 class="fig-title">Simulação: uma fábrica em uma única rede 5G privada</h3></div>
+          <span class="fig-hint">reproduza ou avance passo a passo</span>
+        </div>
+        <div class="fig-body">
+          <div class="fab-wrap" id="fabWrap"><svg id="fabSvg" viewBox="0 0 820 430" role="img" aria-label="Fábrica: sensor no motor, câmera, servidor de borda com IA e robô"></svg></div>
+          <div class="fab-ctrl">
+            <button type="button" class="btn btn--ink" id="fabPlay"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Reproduzir</span></button>
+            <button type="button" class="btn" id="fabNext"><svg aria-hidden="true"><use href="#i-next"/></svg>Próximo passo</button>
+            <button type="button" class="btn" id="fabReset"><svg aria-hidden="true"><use href="#i-reset"/></svg>Reiniciar</button>
+            <label class="sr-only" for="fabScrub">Linha do tempo da simulação</label>
+            <input type="range" id="fabScrub" min="0" max="1000" value="0" step="1">
+          </div>
+          <ol class="fab-steps" id="fabSteps"></ol>
+        </div>
+        <p class="fig-cap">Cenário descrito na pesquisa: sensores de vibração (massive IoT) detectam a anomalia, câmeras (eMBB) enviam imagens a um servidor de borda, a IA confirma o defeito e o sistema comanda um robô (URLLC) para retirar a peça.</p>
+      </figure>
+
+      <!-- FIG 3.3 fatiamento -->
+      <figure class="fig reveal" id="figSlice">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 3.3</p><h3 class="fig-title">Fatiamento de rede ao vivo</h3></div>
+          <div class="seg" id="sliceSeg" aria-label="Modo da rede">
+            <button type="button" data-m="shared" aria-pressed="false">Rede compartilhada</button>
+            <button type="button" data-m="sliced" aria-pressed="true">Com fatiamento</button>
+          </div>
+        </div>
+        <div class="fig-body">
+          <div class="slice-ctrl">
+            <button type="button" class="btn btn--ink" id="sliceBurst"><svg aria-hidden="true"><use href="#i-video"/></svg>Gerar pico de vídeo</button>
+            <p class="small muted" id="sliceMsg"></p>
+          </div>
+          <div class="slice-box"><canvas id="sliceCanvas" role="img" aria-label="Pacotes de sensores, câmeras e robôs passando pela mesma infraestrutura"></canvas></div>
+          <div class="slice-stats" id="sliceStats" aria-live="polite"></div>
+        </div>
+        <p class="fig-cap">Simulação ilustrativa de fila: a mesma infraestrutura física é dividida em redes virtuais isoladas, cada uma com garantias próprias. Exige 5G SA.</p>
+      </figure>
+
+      <!-- FIG 3.4 escada de dispositivos -->
+      <figure class="fig reveal" id="figTiers">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 3.4</p><h3 class="fig-title">Dispositivos de todos os níveis na mesma rede</h3></div>
+          <span class="fig-hint">escolha um dispositivo</span>
+        </div>
+        <div class="fig-body">
+          <div class="dev-chips" id="devChips" role="radiogroup" aria-label="Dispositivos"></div>
+          <div class="tiers" id="tiers"></div>
+        </div>
+        <p class="fig-cap">NB-IoT e LTE-M seguem como o <em>massive IoT</em> do 5G; RedCap (Release 17) e eRedCap (Release 18) atendem o nível intermediário; o 5G completo fica com as aplicações exigentes.</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Q4 ================= -->
+  <section class="q wrap" id="q4" data-label="Aplicações">
+    <div class="q-head">
+      <div class="q-num" aria-hidden="true">Q4</div>
+      <div>
+        <p class="eyebrow"><span>Pergunta 04 de 06</span><span>· Aplicações</span></p>
+        <h2 class="q-title">Quais são as principais aplicações do 5G na IoT?</h2>
+      </div>
+    </div>
+    <div class="answer">
+      <p class="eyebrow">Resposta rápida</p>
+      <p>Indústria 4.0, saúde, agronegócio, cidades inteligentes, transporte, energia, logística, mineração e varejo. Em cada setor um pilar pesa mais: <strong>URLLC</strong> onde há controle em tempo real (robôs, veículos, redes elétricas), <strong>eMBB</strong> onde há vídeo e realidade aumentada, <strong>mMTC</strong> onde há milhares de sensores simples.</p>
+    </div>
+    <div class="stack">
+      <figure class="fig reveal" id="figHive">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 4.1</p><h3 class="fig-title">Colmeia de setores</h3></div>
+          <div class="seg" id="hiveSeg" aria-label="Filtrar por pilar">
+            <button type="button" data-p="all" aria-pressed="true">Todos</button>
+            <button type="button" data-p="embb" aria-pressed="false">eMBB</button>
+            <button type="button" data-p="urllc" aria-pressed="false">URLLC</button>
+            <button type="button" data-p="mmtc" aria-pressed="false">mMTC</button>
+          </div>
+        </div>
+        <div class="fig-body hive-layout">
+          <div class="hive" id="hive" aria-label="Setores"></div>
+          <div class="hive-detail" id="hiveDetail" aria-live="polite"></div>
+        </div>
+        <p class="fig-cap">Pilares listados em ordem de importância para cada setor, conforme o quadro de aplicações da pesquisa.</p>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Q5 ================= -->
+  <section class="q wrap" id="q5" data-label="Desafios">
+    <div class="q-head">
+      <div class="q-num" aria-hidden="true">Q5</div>
+      <div>
+        <p class="eyebrow"><span>Pergunta 05 de 06</span><span>· Desafios</span></p>
+        <h2 class="q-title">Quais são os desafios dessa tecnologia?</h2>
+      </div>
+    </div>
+    <div class="answer">
+      <p class="eyebrow">Resposta rápida</p>
+      <p>Cobertura desigual, dependência do <button type="button" class="term" data-term="sa">5G Standalone</button> (ainda em implantação), custo e consumo dos módulos, segurança e privacidade (<button type="button" class="term" data-term="lgpd">LGPD</button>), modelos de negócio imaturos, integração com sistemas legados e falta de mão de obra, consumo de energia da infraestrutura, latência fim a fim e regulação de antenas nas cidades.</p>
+    </div>
+
+    <div class="stack">
+      <!-- FIG 5.1 contexto -->
+      <figure class="fig reveal" id="figCtx">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 5.1</p><h3 class="fig-title">Onde o 5G está em 2026</h3></div>
+          <span class="fig-hint">passe o mouse nos anéis</span>
+        </div>
+        <div class="fig-body ctx-layout">
+          <div class="ctx-col">
+            <p class="eyebrow">No Brasil</p>
+            <div class="rings" id="rings"></div>
+            <p class="small muted">Um município conta como atendido com <strong>uma única estação 5G</strong> ativa, o que não significa cobertura de toda a área urbana. Para IoT, confira a cobertura real no local da aplicação (painel de cobertura da Anatel).</p>
+          </div>
+          <div class="ctx-col">
+            <p class="eyebrow">No mundo</p>
+            <ul class="facts">
+              <li><span class="fact-n"><span data-count="95">95</span></span><span>operadoras em <b>53 países</b> já lançaram 5G Standalone, requisito do RedCap e do eRedCap <span class="src">GSA, mar. 2026</span></span></li>
+              <li><span class="fact-n"><span data-count="43">43</span></span><span>operadoras em <b>28 países e territórios</b> investiam em RedCap até setembro <span class="src">GSA, set. 2026</span></span></li>
+              <li><span class="fact-n"><span data-count="5.9" data-dec="1">5,9</span><small> bi</small></span><span>de conexões IoT celulares projetadas até 2035; o eRedCap deve ter mais sucesso que o RedCap <span class="src">Omdia, 2026</span></span></li>
+            </ul>
+            <p class="small muted">Freios da adoção do RedCap: poucas redes 5G SA, modems caros e pouca urgência em trocar dispositivos que ainda funcionam (Omdia).</p>
+          </div>
+        </div>
+      </figure>
+
+      <!-- FIG 5.2 metas SA -->
+      <figure class="fig reveal" id="figGoals">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 5.2</p><h3 class="fig-title">Metas de 5G SA no Brasil: calcule para uma cidade</h3></div>
+          <span class="fig-hint">digite ou arraste a população</span>
+        </div>
+        <div class="fig-body">
+          <div class="timeline" id="saTimeline"></div>
+          <div class="calc">
+            <div class="calc-in">
+              <label for="popInput" class="eyebrow">População do município</label>
+              <div class="calc-row">
+                <input type="number" id="popInput" min="1000" max="13000000" step="1000" value="150000" inputmode="numeric">
+                <span class="small muted">habitantes</span>
+              </div>
+              <input type="range" id="popRange" min="0" max="1000" value="500" aria-label="População (escala logarítmica)">
+              <div class="presets" id="popPresets">
+                <button type="button" class="chip" data-v="25000">25 mil</button>
+                <button type="button" class="chip" data-v="80000">80 mil</button>
+                <button type="button" class="chip" data-v="150000">150 mil</button>
+                <button type="button" class="chip" data-v="600000">600 mil</button>
+                <button type="button" class="chip" data-v="2300000">2,3 mi</button>
+              </div>
+            </div>
+            <div class="calc-out" id="calcOut" aria-live="polite"></div>
+          </div>
+          <div class="ant-dots" id="antDots" aria-hidden="true"></div>
+        </div>
+        <p class="fig-cap">Regra do edital citada na pesquisa: uma antena 5G SA para cada 15 mil habitantes em municípios acima de 200 mil habitantes até julho de 2026, acima de 100 mil até julho de 2027 e acima de 30 mil até julho de 2029. Cálculo simplificado. A parte escura da linha do tempo vai até hoje.</p>
+      </figure>
+
+      <!-- FIG 5.3 latência fim a fim -->
+      <figure class="fig reveal" id="figEdge">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 5.3</p><h3 class="fig-title">Latência fim a fim: por que a borda importa</h3></div>
+          <span class="fig-hint">afaste o servidor</span>
+        </div>
+        <div class="fig-body">
+          <div class="presets" id="edgePresets">
+            <button type="button" class="chip" data-km="1">Borda na fábrica · 1 km</button>
+            <button type="button" class="chip" data-km="30">Data center na cidade · 30 km</button>
+            <button type="button" class="chip" data-km="500">Nuvem em outro estado · 500 km</button>
+            <button type="button" class="chip" data-km="8000">Nuvem em outro continente · 8.000 km</button>
+          </div>
+          <label for="edgeRange" class="eyebrow edge-label">Distância até o servidor: <b id="edgeKm" class="num">30 km</b></label>
+          <input type="range" id="edgeRange" min="0" max="1000" value="369">
+          <div class="edge-viz" id="edgeViz"></div>
+        </div>
+        <p class="fig-cap">Cálculo físico: a luz percorre a fibra óptica a cerca de 200 mil km/s, ou seja, 5 µs por km em cada sentido. É o mínimo possível, sem contar roteadores, filas e processamento.</p>
+      </figure>
+
+      <!-- FIG 5.4 desafios -->
+      <figure class="fig reveal" id="figChal">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 5.4</p><h3 class="fig-title">Nove desafios e como lidar com eles</h3></div>
+          <span class="fig-hint">vire os cartões</span>
+        </div>
+        <div class="fig-body"><div class="chal-grid" id="chGrid"></div></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Q6 ================= -->
+  <section class="q wrap" id="q6" data-label="IA e automação">
+    <div class="q-head">
+      <div class="q-num" aria-hidden="true">Q6</div>
+      <div>
+        <p class="eyebrow"><span>Pergunta 06 de 06</span><span>· IA e automação</span></p>
+        <h2 class="q-title">Como o 5G se relaciona com a inteligência artificial e a automação?</h2>
+      </div>
+    </div>
+    <div class="answer">
+      <p class="eyebrow">Resposta rápida</p>
+      <p>Formam um ciclo que se reforça: a <strong>IoT gera os dados</strong>, o <strong>5G os transporta</strong> com rapidez e confiabilidade, a <strong>IA transforma dados em decisões</strong> e a <strong>automação executa</strong> as decisões no mundo físico. A relação vale nos dois sentidos: o 5G serve à IA (borda, baixa latência, capacidade) e a IA serve à própria rede (<button type="button" class="term" data-term="nwdaf">NWDAF</button>, <button type="button" class="term" data-term="son">SON</button> e IA na interface de rádio do 5G-Advanced).</p>
+    </div>
+
+    <div class="stack">
+      <figure class="fig reveal" id="figLoop">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 6.1</p><h3 class="fig-title">O ciclo dados → decisão → ação</h3></div>
+          <div class="seg" id="dirSeg" aria-label="Direção da relação">
+            <button type="button" data-d="a" aria-pressed="true">5G a serviço da IA</button>
+            <button type="button" data-d="b" aria-pressed="false">IA a serviço da rede</button>
+          </div>
+        </div>
+        <div class="fig-body">
+          <div class="sector-tabs" id="loopTabs" role="tablist" aria-label="Exemplos por setor"></div>
+          <div class="loop-layout">
+            <div class="loop-stage"><svg id="loopSvg" viewBox="0 0 520 520" role="img" aria-label="Ciclo: sensores, 5G, IA, automação"></svg></div>
+            <div class="loop-panel" id="loopPanel" aria-live="polite"></div>
+          </div>
+        </div>
+        <p class="fig-cap">Exemplos por setor da seção 8.6 da pesquisa. No modo "IA a serviço da rede", o diagrama mostra a inteligência dentro do próprio 5G.</p>
+      </figure>
+
+      <figure class="fig reveal" id="figCare">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 6.2</p><h3 class="fig-title">Cuidados nessa integração</h3></div>
+        </div>
+        <div class="fig-body">
+          <div class="care">
+            <div class="care-item"><svg aria-hidden="true"><use href="#i-shield"/></svg><h4>Segurança</h4><p>Sistemas automáticos conectados podem ser atacados; decisões críticas exigem redundância e supervisão humana.</p></div>
+            <div class="care-item"><svg aria-hidden="true"><use href="#i-chart"/></svg><h4>Dados e vieses</h4><p>Modelos treinados com dados ruins ou incompletos podem errar em escala.</p></div>
+            <div class="care-item"><svg aria-hidden="true"><use href="#i-eye"/></svg><h4>Privacidade</h4><p>O grande volume de dados coletados exige conformidade com a LGPD.</p></div>
+            <div class="care-item"><svg aria-hidden="true"><use href="#i-users"/></svg><h4>Trabalho</h4><p>A automação muda funções e exige requalificação profissional.</p></div>
+          </div>
+          <p class="next-gen"><span class="eyebrow">Próximo passo</span> O <strong>6G</strong>, previsto para cerca de 2030, vem sendo pensado como uma rede <strong>nativamente baseada em IA</strong>, em que comunicação, computação e inteligência fazem parte da mesma infraestrutura.</p>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Conclusão ================= -->
+  <section class="q wrap" id="fim" data-label="Conclusão e quiz">
+    <div class="q-head">
+      <div class="q-num q-num--end" aria-hidden="true">5G</div>
+      <div>
+        <p class="eyebrow"><span>Conclusão</span><span>· Síntese da pesquisa</span></p>
+        <h2 class="q-title">O 5G muda o papel da IoT: de coletar dados a controlar processos</h2>
+      </div>
+    </div>
+
+    <div class="fronts">
+      <div class="front"><p class="front-k">Escala</p><p>Milhões de dispositivos por km² via mMTC, NB-IoT e LTE-M.</p></div>
+      <div class="front"><p class="front-k">Desempenho</p><p>Latência de milissegundos e alta confiabilidade (URLLC), além de banda larga extrema (eMBB).</p></div>
+      <div class="front"><p class="front-k">Flexibilidade</p><p>Fatiamento de rede, edge computing, redes privadas e RedCap.</p></div>
+    </div>
+    <p class="prose conclusion-text">Combinado com IA e processamento na borda, o 5G vira a base da automação na indústria, energia, transporte, saúde e agronegócio, embora cobertura, custo, dependência do 5G SA e segurança ainda limitem esse potencial. E ele <strong>não substitui todas as outras tecnologias</strong>: para sensores simples, baratos e de bateria longa, Zigbee, BLE, LoRaWAN, NB-IoT e LTE-M continuam sendo as melhores escolhas, muitas vezes ligadas ao 5G por um gateway.</p>
+
+    <div class="stack">
+      <figure class="fig reveal" id="figPick">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 7.1</p><h3 class="fig-title">Qual conectividade escolher para o seu projeto?</h3></div>
+          <span class="fig-hint">responda e descubra</span>
+        </div>
+        <div class="fig-body"><div class="pick" id="pick"></div></div>
+        <p class="fig-cap">Árvore de decisão baseada no guia rápido de escolha da pesquisa (seções 2 a 4) e nos níveis de dispositivo do 5G (seção 8).</p>
+      </figure>
+
+      <figure class="fig reveal" id="figQuiz">
+        <div class="fig-head">
+          <div><p class="fig-id">FIG 7.2</p><h3 class="fig-title">Teste rápido: 6 perguntas, uma por seção</h3></div>
+          <span class="fig-hint" id="quizBest">sem recorde ainda</span>
+        </div>
+        <div class="fig-body"><div class="quiz" id="quiz"></div></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= Rodapé ================= -->
+  <footer class="credits wrap">
+    <div class="credits-grid">
+      <div>
+        <p class="eyebrow">Créditos</p>
+        <p class="credit-names">Julio Aurelio Souza<br>Vinicius Mariozi Oliveira</p>
+        <p class="small muted">Infográfico baseado na pesquisa "Conectividade em IoT: Bluetooth/BLE, Zigbee, LoRaWAN, NB-IoT e LTE-M", seção 8: o 5G e a evolução da IoT. 10/11/2026.</p>
+        <p class="small muted kbd-help">Atalhos: <span class="kbd">←</span> <span class="kbd">→</span> pergunta anterior/próxima · <span class="kbd">1</span>–<span class="kbd">6</span> ir para a pergunta · <span class="kbd">T</span> trocar tema</p>
+      </div>
+      <details class="refbox">
+        <summary>Referências da pesquisa sobre 5G</summary>
+        <ul class="refs">
+          <li><a href="https://www.itu.int/en/ITU-R/study-groups/rsg5/rwp5d/imt-2020/Pages/default.aspx" target="_blank" rel="noopener">ITU — IMT-2020 (requisitos do 5G)</a></li>
+          <li><a href="https://www.3gpp.org/specifications-technologies/releases" target="_blank" rel="noopener">3GPP — Releases e especificações 5G</a></li>
+          <li>Omdia — Previsão de 5,9 bilhões de conexões IoT celulares até 2035 (jun. 2026)</li>
+          <li>Omdia — Desafios de adoção do RedCap e perspectiva do eRedCap (jul. 2026)</li>
+          <li>GSA — 5G RedCap e a próxima fase da IoT celular</li>
+          <li>TelecomLead — Conectividade de máquinas em 2026</li>
+          <li>Agência Gov — Acessos ao 5G no Brasil (out. 2026)</li>
+          <li>Exame — Por que o Brasil ainda não tem 5G de verdade? (mai. 2026)</li>
+          <li>Tecnoblog — Cronograma de compromissos de cobertura 5G SA</li>
+          <li>Anatel — Painel de cobertura móvel</li>
+        </ul>
+      </details>
+    </div>
+  </footer>
+</main>
+
+<div id="tip" role="tooltip" aria-hidden="true"></div>
+
+<script src="js/data.js" defer></script>
+<script src="js/core.js" defer></script>
+<script src="js/hero.js" defer></script>
+<script src="js/q1.js" defer></script>
+<script src="js/q2.js" defer></script>
+<script src="js/q3.js" defer></script>
+<script src="js/q4.js" defer></script>
+<script src="js/q5.js" defer></script>
+<script src="js/q6.js" defer></script>
+<script src="js/final.js" defer></script>
+</body>
+</html>
